@@ -1,9 +1,13 @@
-const MainLayout = () => {
-    return (
-        <div>
-            <h2 className="text-center text-4xl text-green-500 font-semibold mt-40">MainLayout</h2>
-        </div>
-    )
-}
+import { Outlet } from "react-router-dom";
+import Navbar from "../component/Navbar";
 
-export default MainLayout
+const MainLayout = () => {
+  return (
+    <main>
+      <Navbar />
+      <Outlet />
+    </main>
+  );
+};
+
+export default MainLayout;

@@ -29,43 +29,19 @@ function LoginPage() {
     try {
       const res = await axiosSecure.post("/auth/login", formValue);
       if (res.status === 200) {
-        const token = res.data?.approvalToken;
+        const token = res.data?.data?.accessToken;
         if (token) localStorage.setItem("token", token);
-        localStorage.setItem("user", JSON.stringify(res.data?.user));
-        setUser(res.data?.user);
+        const meRes = await axiosSecure.get("/users/me");
+        const user = meRes.data.data;
+        localStorage.setItem("user", JSON.stringify(user));
+        setUser(user);
         toast.success("Logged in successfully!");
         res.data?.user?.role === "admin"
           ? navigate("/dashboard/admin-home")
           : navigate("/");
       } else toast.error("Unexpected response from server.");
     } catch (error: any) {
-      if (error.response) {
-        if (error.response.data?.message == "User is not verified.") {
-          const result = await Swal.fire({
-            title: "Email not verified",
-            text: "Would you like us to resend the verification email?",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonText: "Resend",
-            cancelButtonText: "Cancel",
-          });
-
-          if (result.isConfirmed) {
-            await axiosSecure.post("/users/requestVerificationEmail", {
-              email,
-            });
-            toast.success("Verification email resent. Check your inbox.");
-          } else {
-            toast.error("Email verification required to continue.");
-          }
-          return;
-        } else
-          toast.error(
-            error.response.data?.message || "Invalid username or password"
-          );
-      } else {
-        toast.error("Failed to login. Please try again.");
-      }
+      toast.error(error.response.data?.message || "Something Went Wrong!");
     } finally {
       setLoginLoading(false);
     }
@@ -74,7 +50,7 @@ function LoginPage() {
   const handleForgotPassword = async () => {
     try {
       setForgotPassLoading(true);
-      const res = await axiosSecure.post("/auth/forgetPassword", {
+      const res = await axiosSecure.post("/auth/forgot-password", {
         email: forgetPassMail,
       });
       if (res.status !== 200) toast.error("Network response was not ok");
@@ -128,7 +104,7 @@ function LoginPage() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="appearance-none relative block w-full px-3 py-2 pl-10 border border-gray-300 placeholder-gray-500text-gray-900 rounded-md bg-white focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm transition-colors"
+                  className="relative block w-full px-3 py-2 pl-10 border border-gray-300 placeholder-gray-500text-gray-900 rounded-md bg-white focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm transition-colors"
                   placeholder="Email address"
                 />
               </div>
@@ -149,7 +125,7 @@ function LoginPage() {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="appearance-none relative block w-full px-3 py-2 pl-10 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-white focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm transition-colors"
+                  className="relative block w-full px-3 py-2 pl-10 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-white focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm transition-colors"
                   placeholder="Password"
                 />
               </div>
@@ -206,7 +182,7 @@ function LoginPage() {
                   required
                   value={forgetPassMail}
                   onChange={(e) => setForgetPassMail(e.target.value)}
-                  className="appearance-none relative block w-full px-3 py-2 pl-10 border placeholder-gray-500 text-gray-900 rounded-md bg-white dark:bg-gray-700 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm transition-colors"
+                  className="relative block w-full px-3 py-2 pl-10 border placeholder-gray-500 text-gray-900 rounded-md bg-white focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm transition-colors"
                   placeholder="Email address"
                 />
               </div>

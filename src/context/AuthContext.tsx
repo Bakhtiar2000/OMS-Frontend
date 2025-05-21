@@ -5,17 +5,11 @@ import {
   useState,
   useEffect,
 } from "react";
-
-export interface User {
-  email: string;
-  name: string;
-  img: string;
-  role: "admin" | "user";
-}
+import type { TUser } from "../types/user.type";
 
 export interface AuthContextType {
-  user: User | null;
-  setUser: React.Dispatch<React.SetStateAction<User | null>>;
+  user: TUser | null;
+  setUser: React.Dispatch<React.SetStateAction<TUser | null>>;
   logout: () => void;
   loading: boolean;
 }
@@ -25,17 +19,17 @@ export const AuthContext = createContext<AuthContextType | undefined>(
 );
 
 const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<TUser | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     const user = localStorage.getItem("user");
     if (token && user) {
-      const parsedUser: User = JSON.parse(user);
+      const parsedUser: TUser = JSON.parse(user);
       setUser(parsedUser);
     }
-    setLoading(false); // done checking
+    setLoading(false);
   }, []);
 
   const logout = () => {

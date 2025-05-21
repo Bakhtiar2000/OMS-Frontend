@@ -1,20 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
 import axiosSecure from "./useAxios";
 
-const useCarts = () => {
+const useMyCart = () => {
   const {
-    data: cartsData = [],
-    isLoading: cartsLoading,
-    refetch: cartsRefetch,
+    data: myCartData = [],
+    isLoading: myCartLoading,
+    refetch: myCartRefetch,
   } = useQuery({
-    queryKey: ["cartsData"],
+    queryKey: ["myCartData"],
     queryFn: async () => {
       const res = await axiosSecure.get(`/carts`);
       return res.data?.data;
     },
   });
 
-  return { cartsData, cartsLoading, cartsRefetch };
+  return { myCartData, myCartLoading, myCartRefetch };
 };
 
-export default useCarts;
+export default useMyCart;

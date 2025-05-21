@@ -13,6 +13,7 @@ import AdminPrivateRoute from "./AdminPrivateRoute";
 import AdminHome from "../pages/dashboard/admin/AdminHome";
 import AllUsers from "../pages/dashboard/admin/AllUsers";
 import AllOrders from "../pages/dashboard/admin/AllOrders";
+import ResetPasswordPage from "../pages/ResetPasswordPage";
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
   },
   { path: "register", element: <RegisterPage /> },
   { path: "login", element: <LoginPage /> },
+  {
+    path: "reset-password",
+    element: <ResetPasswordPage />,
+  },
 ]);
 
 export default router;

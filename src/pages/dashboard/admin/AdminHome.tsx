@@ -19,7 +19,7 @@ const AdminHome = () => {
       </p>
 
       {/* Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10 w-full max-w-6xl">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10 w-full max-w-6xl">
         {/* Card 1 - Users */}
         <div className="bg-white shadow-md rounded-xl p-6 flex flex-col items-center text-center">
           <Users className="text-blue-500 w-8 h-8 mb-2" />

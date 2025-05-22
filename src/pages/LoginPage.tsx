@@ -36,7 +36,7 @@ function LoginPage() {
         localStorage.setItem("user", JSON.stringify(user));
         setUser(user);
         toast.success("Logged in successfully!");
-        res.data?.user?.role === "admin"
+        user?.role === "admin"
           ? navigate("/dashboard/admin-home")
           : navigate("/");
       } else toast.error("Unexpected response from server.");

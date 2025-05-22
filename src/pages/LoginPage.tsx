@@ -142,7 +142,7 @@ function LoginPage() {
             <button
               type="submit"
               disabled={loginLoading}
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-500 duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-green-500 duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               {loginLoading ? (
                 <Loader2 className="h-5 w-5 animate-spin" />
@@ -157,7 +157,7 @@ function LoginPage() {
       {/* Forgot Password Modal */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+          className="fixed inset-0 bg-dark bg-opacity-50 flex justify-center items-center z-50"
           onClick={() => setIsOpen(false)}
         >
           <div

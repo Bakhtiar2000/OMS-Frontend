@@ -107,7 +107,7 @@ const ResetPasswordPage = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-500 transition mt-6"
+            className="w-full bg-primary text-white py-2 rounded hover:bg-green-500 transition mt-6"
           >
             {loading ? (
               <Loader2 className="h-5 w-5 animate-spin mx-auto" />

@@ -8,7 +8,7 @@ const CartPage = () => {
   const { myCartData, myCartLoading, myCartRefetch } = useMyCart();
   const [loading, setLoading] = useState(false);
   return (
-    <div className="max-w-5xl mx-8 lg:mx-auto py-20 md:pt-24 lg:px-4">
+    <div className="max-w-5xl mx-8 lg:mx-auto py-10 lg:px-4">
       <h2 className="text-2xl font-semibold text-center mb-4">My Cart</h2>
 
       {myCartLoading ? (
@@ -17,7 +17,7 @@ const CartPage = () => {
         </div>
       ) : (
         <div className="overflow-x6-auto">
-          {myCartData.cart.items.length > 0 ? (
+          {myCartData.cart && myCartData.cart.items.length > 0 ? (
             <div className="grid md:grid-cols-3 gap-10">
               {/* Cart Cards */}
               <div className="col-span-2">
@@ -33,7 +33,7 @@ const CartPage = () => {
 
               {/* Order summary */}
               <div
-                className={`border border-black p-5 rounded-xl h-fit transition-all ${
+                className={`border border-dark p-5 rounded-xl h-fit transition-all ${
                   loading
                     ? "blur-sm  pointer-events-none cursor-not-allowed"
                     : ""
@@ -48,7 +48,7 @@ const CartPage = () => {
                 <p className="flex justify-between gap-3">
                   <span>Discount:</span> 0
                 </p>
-                <p className="border-b border-black my-2"></p>
+                <p className="border-b border-dark my-2"></p>
                 <p className="flex justify-between gap-3">
                   <span>Initial Cost:</span> {myCartData.totalAmount}
                 </p>
@@ -56,7 +56,7 @@ const CartPage = () => {
                 <p className="mt-5 flex justify-between gap-3">
                   <span>Delivery Cost:</span> 70
                 </p>
-                <p className="border-b border-black my-2"></p>
+                <p className="border-b border-dark my-2"></p>
                 <p className="flex justify-between gap-3">
                   <span>Total Cost:</span>{" "}
                   {parseFloat(myCartData.totalAmount) + 70}
@@ -72,7 +72,7 @@ const CartPage = () => {
             </div>
           ) : (
             <div>
-              <p className="text-center">No Cart Found</p>
+              <p className="text-center">No Items Found</p>
             </div>
           )}
         </div>

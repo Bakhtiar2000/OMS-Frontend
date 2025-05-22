@@ -51,7 +51,7 @@ const SingleProductPage = () => {
   let cart;
   if (!myCartLoading)
     cart =
-      myCartData &&
+      myCartData.cart &&
       myCartData.cart.items.length > 0 &&
       myCartData.cart.items.find(
         (item: { productId: TProduct }) =>

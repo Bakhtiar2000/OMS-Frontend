@@ -52,7 +52,7 @@ const ProductCard = ({ product, refetch }: TProductCard) => {
   let cart;
   if (user && !myCartLoading)
     cart =
-      myCartData &&
+      myCartData.cart &&
       myCartData.cart.items.length > 0 &&
       myCartData.cart.items.find(
         (item: { productId: TProduct }) => item.productId._id === _id

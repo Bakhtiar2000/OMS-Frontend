@@ -14,6 +14,8 @@ import AdminHome from "../pages/dashboard/admin/AdminHome";
 import AllUsers from "../pages/dashboard/admin/AllUsers";
 import AllOrders from "../pages/dashboard/admin/AllOrders";
 import ResetPasswordPage from "../pages/ResetPasswordPage";
+import TrackOrderPage from "../pages/TrackOrderPage";
+import AllProducts from "../pages/dashboard/admin/AllProducts";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +29,7 @@ const router = createBrowserRouter([
         path: "cart",
         element: (
           <PrivateRoute>
-            <CartPage />{" "}
+            <CartPage />
           </PrivateRoute>
         ),
       },
@@ -35,7 +37,15 @@ const router = createBrowserRouter([
         path: "order",
         element: (
           <PrivateRoute>
-            <OrderPage />{" "}
+            <OrderPage />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "track-order",
+        element: (
+          <PrivateRoute>
+            <TrackOrderPage />
           </PrivateRoute>
         ),
       },
@@ -52,7 +62,8 @@ const router = createBrowserRouter([
     children: [
       { path: "admin-home", element: <AdminHome /> },
       { path: "users", element: <AllUsers /> },
-      { path: "users", element: <AllOrders /> },
+      { path: "products", element: <AllProducts /> },
+      { path: "orders", element: <AllOrders /> },
     ],
   },
   { path: "register", element: <RegisterPage /> },

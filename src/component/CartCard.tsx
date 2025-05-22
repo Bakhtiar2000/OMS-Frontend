@@ -103,7 +103,7 @@ const CartCard = ({ item, refetch, loading, setLoading }: TCartCard) => {
 
       <div className="flex flex-col items-end justify-between gap-5">
         {/* Quantity Counter */}
-        <div className="flex items-center border border-black rounded w-fit">
+        <div className="flex items-center border border-dark rounded w-fit">
           <button
             onClick={decrease}
             className="px-3 py-1 text-lg disabled:bg-gray-100 disabled:opacity-40"

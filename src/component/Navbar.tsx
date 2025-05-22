@@ -1,4 +1,4 @@
-import { LogIn, LogOut } from "lucide-react";
+import { LogIn, LogOut, Truck } from "lucide-react";
 import { BsCartPlusFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
@@ -30,16 +30,30 @@ const Navbar = () => {
               </span>
             </Link>
           ) : (
-            <Link
-              to="/cart"
-              className="p-2 hover:bg-slate-200 hover:rounded-xl cursor-pointer relative group"
-            >
-              {/* <div className="h-3 w-3 rounded-xl absolute right-1 top-1" /> */}
-              <BsCartPlusFill size={30} />
-              <span className="absolute z-30 left-1/2 top-full mt-2 mb-2 w-max -translate-x-1/2 scale-0 transition-all rounded bg-green-500 px-1 pb-0.5 text-xs text-white group-hover:scale-100">
-                Cart
-              </span>
-            </Link>
+            <>
+              {user && user.role == "user" && (
+                <Link
+                  to="/track-order"
+                  className="p-2 hover:bg-slate-200 hover:rounded-xl cursor-pointer relative group"
+                >
+                  {/* <div className="h-3 w-3 rounded-xl absolute right-1 top-1" /> */}
+                  <Truck size={30} />
+                  <span className="absolute z-30 left-1/2 top-full mt-2 mb-2 w-max -translate-x-1/2 scale-0 transition-all rounded bg-green-500 px-1 pb-0.5 text-xs text-white group-hover:scale-100">
+                    Track my order
+                  </span>
+                </Link>
+              )}
+              <Link
+                to="/cart"
+                className="p-2 hover:bg-slate-200 hover:rounded-xl cursor-pointer relative group"
+              >
+                {/* <div className="h-3 w-3 rounded-xl absolute right-1 top-1" /> */}
+                <BsCartPlusFill size={30} />
+                <span className="absolute z-30 left-1/2 top-full mt-2 mb-2 w-max -translate-x-1/2 scale-0 transition-all rounded bg-green-500 px-1 pb-0.5 text-xs text-white group-hover:scale-100">
+                  Cart
+                </span>
+              </Link>
+            </>
           )}
 
           {!user ? (

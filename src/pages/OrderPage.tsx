@@ -54,7 +54,7 @@ const OrderPage = () => {
 
   return (
     <section className="max-w-5xl mx-8 lg:mx-auto py-10 lg:px-4">
-      <h2 className="text-2xl font-semibold text-center mb-4">My Order</h2>
+      <h2 className="text-2xl font-semibold text-center mb-12">My Order</h2>
       {myCartLoading ? (
         <div className="flex justify-center items-center py-20 text-4xl">
           <Loader2 className="w-16 h-16 animate-spin" />
@@ -153,10 +153,10 @@ const OrderPage = () => {
                   />
                 </div>
 
-                {/* Payment Status */}
+                {/* Payment Method */}
                 <div>
                   <label className="block text-left text-sm font-medium text-gray-700">
-                    Payment Status <span className="text-red-500">*</span>
+                    Payment Method <span className="text-red-500">*</span>
                   </label>
 
                   <div className="mt-2 ">
@@ -169,7 +169,7 @@ const OrderPage = () => {
                         })}
                         className="text-dark focus:ring-dark"
                       />
-                      <span>Manual Payment</span>
+                      <span>Bkash/ Nagad/ Card</span>
                     </label>
 
                     <label className="flex items-center gap-2 cursor-pointer">
@@ -195,7 +195,7 @@ const OrderPage = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="col-span-2 w-full bg-dark text-white rounded-lg flex items-center justify-center gap-2 hover:bg-gray-800 transition mt-3 mb-2"
+                  className="col-span-2 w-full bg-dark text-white rounded-lg flex items-center justify-center gap-2 h-10 transition mt-3 mb-2"
                 >
                   {loading ? (
                     <Loader2 className="h-5 w-5 animate-spin mx-auto" />

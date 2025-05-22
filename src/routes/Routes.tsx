@@ -16,6 +16,7 @@ import AllOrders from "../pages/dashboard/admin/AllOrders";
 import ResetPasswordPage from "../pages/ResetPasswordPage";
 import TrackOrderPage from "../pages/TrackOrderPage";
 import AllProducts from "../pages/dashboard/admin/AllProducts";
+import OrderItemPageRenderer from "../component/OrderItemPageRenderer";
 
 const router = createBrowserRouter([
   {
@@ -63,7 +64,72 @@ const router = createBrowserRouter([
       { path: "admin-home", element: <AdminHome /> },
       { path: "users", element: <AllUsers /> },
       { path: "products", element: <AllProducts /> },
-      { path: "orders", element: <AllOrders /> },
+      {
+        path: "orders",
+        element: <AllOrders />,
+        children: [
+          {
+            path: "pending",
+            element: (
+              <OrderItemPageRenderer
+                currentStatus="pending"
+                nextStatus="packaging"
+                buttonLabel="Accept"
+              />
+            ),
+          },
+          {
+            path: "packaging",
+            element: (
+              <OrderItemPageRenderer
+                currentStatus="packaging"
+                nextStatus="ready_to_ship"
+                buttonLabel="Ready to Ship"
+              />
+            ),
+          },
+          {
+            path: "ready-to-ship",
+            element: (
+              <OrderItemPageRenderer
+                currentStatus="ready_to_ship"
+                nextStatus="on_the_way"
+                buttonLabel="Courier Handoff"
+              />
+            ),
+          },
+          {
+            path: "on-the-way",
+            element: (
+              <OrderItemPageRenderer
+                currentStatus="on_the_way"
+                nextStatus="delivered"
+                buttonLabel="Mark Delivered"
+              />
+            ),
+          },
+          {
+            path: "delivered",
+            element: (
+              <OrderItemPageRenderer
+                currentStatus="delivered"
+                nextStatus={null}
+                buttonLabel={null}
+              />
+            ),
+          },
+          {
+            path: "cancelled",
+            element: (
+              <OrderItemPageRenderer
+                currentStatus="cancelled"
+                nextStatus={null}
+                buttonLabel={null}
+              />
+            ),
+          },
+        ],
+      },
     ],
   },
   { path: "register", element: <RegisterPage /> },

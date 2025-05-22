@@ -2,7 +2,7 @@
 
 Shoppo is a full-featured e-commerce web application built using **Vite + React**. It supports two roles: `User` and `Admin`. Users can browse products, manage their cart, and track orders, while Admins can manage products, orders, and users from an intuitive dashboard.
 
-🌐 **Live Link**: [https://grand-centaur-e1b3c6.netlify.app/](https://grand-centaur-e1b3c6.netlify.app/)
+🌐 **Live Link**: [https://grand-centaur-e1b3c6.netlify.app/](https://eclectic-sfogliatella-5e3f52.netlify.app/)
 
 ---
 

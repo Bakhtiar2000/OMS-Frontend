@@ -80,8 +80,3 @@ This is a modern and responsive e-commerce platform with essential features for 
 - Email: `fahim@oms.com`
 - Password: `111111`
 
----
-
-## 📝 License
-
-This project is open source and available under the [MIT License](LICENSE).

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosSecure = axios.create({
-  baseURL: "https://oms-backend-xiv3.onrender.com/api/v1",
+  baseURL: "https://oms-backend-orz1.onrender.com/api/v1",
 });
 
 axiosSecure.interceptors.request.use((config) => {

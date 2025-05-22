@@ -1,8 +1,4 @@
-import toast from "react-hot-toast";
-import { FaRegTrashAlt } from "react-icons/fa";
-import Swal from "sweetalert2";
 import type { TProduct } from "../types/product.type";
-import axiosSecure from "../hook/useAxios";
 
 type TProductData = {
   product: TProduct;
@@ -10,7 +6,7 @@ type TProductData = {
   index: number;
 };
 
-const ProductsTableRow = ({ product, refetch, index }: TProductData) => {
+const ProductsTableRow = ({ product, index }: TProductData) => {
   return (
     <>
       <tr className="text-xs sm:text-base h-12 border-b">

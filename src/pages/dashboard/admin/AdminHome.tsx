@@ -1,4 +1,4 @@
-import { Mail, Users, DollarSign, Calendar, FileText } from "lucide-react";
+import { Mail, Users, FileText } from "lucide-react";
 import { useAuth } from "../../../context/AuthContext";
 import useUsers from "../../../hook/useUsers";
 import useOrders from "../../../hook/useOrders";

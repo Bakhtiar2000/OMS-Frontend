@@ -1,54 +1,87 @@
-# React + TypeScript + Vite
+# 💼 Shoppo – E-commerce Web Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Shoppo is a full-featured e-commerce web application built using **Vite + React**. It supports two roles: `User` and `Admin`. Users can browse products, manage their cart, and track orders, while Admins can manage products, orders, and users from an intuitive dashboard.
 
-Currently, two official plugins are available:
+🌐 **Live Link**: [https://grand-centaur-e1b3c6.netlify.app/](https://grand-centaur-e1b3c6.netlify.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Getting Started – Local Setup
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### ✅ Prerequisites
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- Node.js (v18+ recommended)
+- npm or yarn
+
+### 📦 Installation Steps
+
+```bash
+# Clone the repository
+git clone https://github.com/Bakhtiar2000/OMS-Frontend.git
+cd OMS-Frontend
+
+# Install dependencies
+npm install
+# or
+yarn
+
+# Start the development server
+npm run dev
+# or
+yarn dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+> The app will run at `http://localhost:5173` by default.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## 🧠 Project Overview
+
+This is a modern and responsive e-commerce platform with essential features for both end users and administrators.
+
+### 👤 Users can:
+
+- View product listings with images and prices
+- Add products to the cart
+- Place orders with shipping details
+- Track their previous orders
+- Use Cash on Delivery (COD) or other payment methods
+
+### 🛠️ Admins can:
+
+- Add, update, and delete products
+- View and manage all orders
+- Track and update order statuses (e.g., Pending → On-the-Way → Delivered)
+- Manage registered users
+
+---
+
+## 🌟 Key Features
+
+- 🔐 Role-based Authentication (User/Admin)
+- 🛒 Cart and Checkout system
+- 📦 Real-time Order Status Tracking
+- 📁 Modular React structure with Vite
+- 👤 Admin Dashboard with user and order management
+- ⚡ Fast performance with modern tooling
+- ✅ Secure endpoints with protected routes
+
+---
+
+## 🔪 Test Credentials
+
+### 👤 Admin
+
+- Email: `admin@oms.com`
+- Password: `111111`
+
+### 👤 User
+
+- Email: `fahim@oms.com`
+- Password: `111111`
+
+---
+
+## 📝 License
+
+This project is open source and available under the [MIT License](LICENSE).

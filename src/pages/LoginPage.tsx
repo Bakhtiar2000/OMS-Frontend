@@ -74,7 +74,7 @@ function LoginPage() {
       <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-lg">
         <div className="text-center">
           <h2 className="mt-6 text-3xl font-extrabold text-gray-900 ">
-            Welcome back
+            Welcome back to Shoppo
           </h2>
           <p className="mt-2 text-sm text-gray-600 ">
             Don't have an account?{" "}

@@ -15,12 +15,13 @@ type TCartCard = {
     _id: string;
   };
   refetch: () => void;
+  loading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const CartCard = ({ item, refetch }: TCartCard) => {
+const CartCard = ({ item, refetch, loading, setLoading }: TCartCard) => {
   const id = item.productId._id;
   const { singleProductData } = useSingleProduct(id);
-  const [loading, setLoading] = useState(false);
   const [value, setValue] = useState<number>(item.quantity);
 
   // Debounce logic (2s)
@@ -69,7 +70,7 @@ const CartCard = ({ item, refetch }: TCartCard) => {
         quantity: value,
       });
       if (res.status === 200) {
-        toast.success("Quantity updated!");
+        // toast.success("Quantity updated!");
         refetch();
       } else {
         toast.error("Something went wrong!");
@@ -105,7 +106,7 @@ const CartCard = ({ item, refetch }: TCartCard) => {
         <div className="flex items-center border border-black rounded w-fit">
           <button
             onClick={decrease}
-            className="px-3 py-1 text-lg"
+            className="px-3 py-1 text-lg disabled:bg-gray-100 disabled:opacity-40"
             disabled={loading || value <= 1}
           >
             -
@@ -113,7 +114,7 @@ const CartCard = ({ item, refetch }: TCartCard) => {
           <p className="px-4 py-1 min-w-[2.5rem] text-center">{value}</p>
           <button
             onClick={increase}
-            className="px-3 py-1 text-lg"
+            className="px-3 py-1 text-lg disabled:bg-gray-100 disabled:opacity-40"
             disabled={loading}
           >
             +

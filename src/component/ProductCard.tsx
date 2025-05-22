@@ -50,7 +50,7 @@ const ProductCard = ({ product, refetch }: TProductCard) => {
   };
 
   let cart;
-  if (!myCartLoading)
+  if (user && !myCartLoading)
     cart =
       myCartData &&
       myCartData.cart.items.length > 0 &&
@@ -77,7 +77,7 @@ const ProductCard = ({ product, refetch }: TProductCard) => {
           onClick={handleAddToCart}
           className="bg-zinc-800 text-white rounded-xl p-2 cursor-pointer flex gap-2 items-center justify-center disabled:bg-gray-300 disabled:cursor-not-allowed"
         >
-          {myCartLoading || cartButtonLoading ? (
+          {cartButtonLoading || myCartLoading ? (
             <Loader2 className="h-5 w-5 animate-spin" />
           ) : (
             <>

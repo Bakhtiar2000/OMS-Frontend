@@ -19,7 +19,17 @@ const Navbar = () => {
           {user && (
             <p className="font-semibold">Hello, {user.name.split(" ")[0]} 👋</p>
           )}
-          {user && user.role !== "admin" ? (
+          {user && user.role == "admin" ? (
+            <Link
+              to="/dashboard/admin-home"
+              className="p-2 hover:bg-slate-200 hover:rounded-xl cursor-pointer relative group"
+            >
+              <HiViewGrid size={30} />
+              <span className="absolute z-30 left-1/2 top-full mt-2 mb-2 w-max -translate-x-1/2 scale-0 transition-all rounded bg-green-500 px-1 pb-0.5 text-xs text-white group-hover:scale-100">
+                Dashboard
+              </span>
+            </Link>
+          ) : (
             <Link
               to="/cart"
               className="p-2 hover:bg-slate-200 hover:rounded-xl cursor-pointer relative group"
@@ -28,16 +38,6 @@ const Navbar = () => {
               <BsCartPlusFill size={30} />
               <span className="absolute z-30 left-1/2 top-full mt-2 mb-2 w-max -translate-x-1/2 scale-0 transition-all rounded bg-green-500 px-1 pb-0.5 text-xs text-white group-hover:scale-100">
                 Cart
-              </span>
-            </Link>
-          ) : (
-            <Link
-              to="/dashboard/admin-home"
-              className="p-2 hover:bg-slate-200 hover:rounded-xl cursor-pointer relative group"
-            >
-              <HiViewGrid size={30} />
-              <span className="absolute z-30 left-1/2 top-full mt-2 mb-2 w-max -translate-x-1/2 scale-0 transition-all rounded bg-green-500 px-1 pb-0.5 text-xs text-white group-hover:scale-100">
-                Dashboard
               </span>
             </Link>
           )}

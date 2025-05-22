@@ -1,9 +1,12 @@
 import { Loader2 } from "lucide-react";
 import useMyCart from "../hook/useMyCart";
 import CartCard from "../component/CartCard";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const CartPage = () => {
   const { myCartData, myCartLoading, myCartRefetch } = useMyCart();
+  const [loading, setLoading] = useState(false);
   return (
     <div className="max-w-5xl mx-8 lg:mx-auto py-20 md:pt-24 lg:px-4">
       <h2 className="text-2xl font-semibold text-center mb-4">My Cart</h2>
@@ -15,13 +18,27 @@ const CartPage = () => {
       ) : (
         <div className="overflow-x6-auto">
           {myCartData.cart.items.length > 0 ? (
-            <div className="grid grid-cols-3 gap-10">
+            <div className="grid md:grid-cols-3 gap-10">
+              {/* Cart Cards */}
               <div className="col-span-2">
                 {myCartData.cart.items.map((item: any) => (
-                  <CartCard item={item} refetch={myCartRefetch} />
+                  <CartCard
+                    item={item}
+                    refetch={myCartRefetch}
+                    loading={loading}
+                    setLoading={setLoading}
+                  />
                 ))}
               </div>
-              <div className="border border-black p-5 rounded-xl h-fit">
+
+              {/* Order summary */}
+              <div
+                className={`border border-black p-5 rounded-xl h-fit transition-all ${
+                  loading
+                    ? "blur-sm  pointer-events-none cursor-not-allowed"
+                    : ""
+                }`}
+              >
                 <h2 className="font-semibold text-xl mb-5 text-center">
                   Order Summary
                 </h2>
@@ -45,9 +62,12 @@ const CartPage = () => {
                   {parseFloat(myCartData.totalAmount) + 70}
                 </p>
 
-                <button className="w-full mt-5 bg-zinc-800 text-white rounded-xl p-2 cursor-pointer flex gap-2 items-center justify-center disabled:bg-gray-300 disabled:cursor-not-allowed">
+                <Link
+                  to="/order"
+                  className="w-full mt-5 bg-zinc-800 text-white rounded-xl p-2 cursor-pointer flex gap-2 items-center justify-center disabled:bg-gray-300 disabled:cursor-not-allowed"
+                >
                   Proceed to payment
-                </button>
+                </Link>
               </div>
             </div>
           ) : (
